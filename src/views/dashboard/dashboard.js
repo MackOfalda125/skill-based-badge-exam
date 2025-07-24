@@ -34,10 +34,10 @@ const Dashboard = () => {
         ref={sidebarRef}
       >
         <h2>Dashboard</h2>
-        <a href="#add">Add Record</a>
-        <a href="#edit">Edit Record</a>
-        <a href="#delete">Delete Record</a>
-        <a href="#report">Display All Records</a>
+        <button className="sidebar-btn">Add Record</button>
+        <button className="sidebar-btn">Edit Record</button>
+        <button className="sidebar-btn">Delete Record</button>
+        <button className="sidebar-btn">Display All Records</button>
       </div>
 
       <div className="main">
