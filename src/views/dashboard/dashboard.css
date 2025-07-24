@@ -1,0 +1,95 @@
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  transition: all 0.3s ease;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 220px;
+  background-color: #1f1f20;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--box-shadow);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebar.closed {
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar.open {
+  width: 220px;
+  padding: 20px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar h2 {
+  font-size: var(--font-size-heading);
+  color: var(--color-heading);
+  margin-bottom: 1rem;
+}
+
+.sidebar a {
+  color: var(--color-heading); 
+  text-decoration: none;
+  margin: 10px 0;
+  font-weight: var(--font-weight-bold);
+  transition: color 0.2s ease;
+}
+
+.sidebar a:hover {
+  color: #1f1f20;                     
+  background-color: #f1f1f1;          
+  border-radius: 4px;
+  padding: 4px 8px;
+  transition: all 0.3s ease;
+}
+
+
+/* Main Content */
+.main {
+  flex: 1;
+  padding: 40px;
+  transition: all 0.3s ease;
+}
+
+.main h1 {
+  font-size: var(--font-size-heading);
+  color: var(--color-heading);
+}
+
+ /* 3 horizontal lines for hamburger menu */
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  margin-bottom: 20px;
+  outline: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.hamburger:hover {
+  background-color: #f1f1f1; /* soft white bg */
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-heading); /* matches white text */
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+
