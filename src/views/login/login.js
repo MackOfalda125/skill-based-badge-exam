@@ -31,7 +31,7 @@ function Login() {
 
   return (
     <form onSubmit={handleSubmit} style={{ padding: '20px', fontFamily: 'Arial' }}>
-      <h2>Simple Email Form</h2>
+      <h2>Please log in Good Sir</h2>
       <label htmlFor="email">Email:</label>
       <input
         id="email"
@@ -61,7 +61,7 @@ function Login() {
           onChange={() => setShowPassword(!showPassword)}
           style={{ marginRight: '5px' }}
         />
-        Show Password
+
       </label>
       <button
         type="submit"
