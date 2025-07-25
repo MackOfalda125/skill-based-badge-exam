@@ -1,9 +1,66 @@
 @import '../../index.css';
 
+.login-container {
+  display: flex;
+  margin: 100px auto;
+  justify-content: center;
+  align-items: center;
+  height: calc(80vh - 200px);
+  padding: 40px;
+  font-family: Arial, sans-serif;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  background-color: #2b2e3b;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.show-password {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  cursor: pointer;
+  gap: 6px;
+}
+
 .form-input {
   width: 100%;
   padding: 10px;
-  margin: 5px 0;
   box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
+.submit-button {
+  width: 30%;
+  padding: 10px;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
