@@ -14,9 +14,13 @@ const api = {
   },
 
   // ---------- POST: Add new user ----------
-  addUser: async (name) => {
+  addUser: async (user) => {
     try {
-      const res = await axios.post(API_URL, { name });
+      const res = await axios.post(API_URL, {
+        name: user.name,
+        username: user.username,
+        email: user.email
+      });
       return { data: res.data, error: null };
     } catch (err) {
       return { data: null, error: err.message || 'Failed to add user' };
@@ -24,9 +28,14 @@ const api = {
   },
 
   // ---------- PUT: Update user ----------
-  updateUser: async (id, name) => {
+  updateUser: async (id, user) => {
     try {
-      const res = await axios.put(`${API_URL}/${id}`, { name });
+      // Ensure the user object is sent as JSON
+      const res = await axios.put(`${API_URL}/${id}`, {
+        name: user.name,
+        username: user.username,
+        email: user.email
+      });
       return { data: res.data, error: null };
     } catch (err) {
       return { data: null, error: err.message || 'Failed to update user' };
