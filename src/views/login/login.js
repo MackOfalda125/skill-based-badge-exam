@@ -132,6 +132,7 @@ function Login() {
         <button
           type="submit"
           className="submit-button"
+          placeholder="Login"
           disabled={!email || !password || emailError || passwordError || isSubmitting}
         >
           {isSubmitting ? 'Logging in...' : 'Login'}

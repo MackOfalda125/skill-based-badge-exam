@@ -82,7 +82,7 @@ label {
   padding: 12px;
   background: linear-gradient(135deg, #b88908, #92fe9d);
   border: none;
-  color: #0000;
+  color: #000;
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
