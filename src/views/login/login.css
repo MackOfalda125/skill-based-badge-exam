@@ -46,12 +46,14 @@
 }
 
 .submit-button {
-  width: 30%;
-  padding: 10px;
+  padding: 12px;
+  background: linear-gradient(135deg, #b88908, #92fe9d);
   border: none;
-  color: white;
-  border-radius: 4px;
+  color: #0000;
+  border-radius: 10px;
   cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s , box-shadow 0.3s;
 }
 
 .submit-button:disabled {
