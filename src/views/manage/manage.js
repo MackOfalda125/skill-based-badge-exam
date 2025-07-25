@@ -64,19 +64,28 @@ const Manage = () => {
       <div className="main">
         <div className="manage-container">
           <h1>Manage Users</h1>
-          <div className="users-grid">
-            {users.map(user => (
-              <div key={user.id} className="user-card">
-                <h3>{user.name}</h3>
-                <p>Email: {user.email}</p>
-                <p>Username: {user.username}</p>
-                <p>Phone: {user.phone}</p>
-                <div className="user-actions">
-                  <button className="edit-btn">Edit</button>
-                  <button className="delete-btn">Delete</button>
+          <div className="users-table">
+            <div className="table-header">
+              <div className="column">ID</div>
+              <div className="column">Name</div>
+              <div className="column">Username</div>
+              <div className="column">Email</div>
+              <div className="column">Actions</div>
+            </div>
+            <div className="table-body">
+              {users.map(user => (
+                <div key={user.id} className="table-row">
+                  <div className="column">{user.id}</div>
+                  <div className="column">{user.name}</div>
+                  <div className="column">{user.username}</div>
+                  <div className="column">{user.email}</div>
+                  <div className="column actions">
+                    <button className="edit-btn">Edit</button>
+                    <button className="delete-btn">Delete</button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
