@@ -11,7 +11,17 @@ const Manage = () => {
   const sidebarRef = useRef(null);
 
   useEffect(() => {
-    fetchUsers();
+    const loadUsers = async () => {
+      const { data, error } = await api.fetchUsers();
+      if (error) {
+        setError(error);
+      } else {
+        setUsers(data);
+      }
+      setLoading(false);
+    };
+
+    loadUsers();
   }, []);
 
   const toggleSidebar = () => {
@@ -35,16 +45,6 @@ const Manage = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isSidebarOpen]);
-
-  const fetchUsers = async () => {
-    const { data, error } = await api.fetchUsers();
-    if (error) {
-      setError(error);
-    } else {
-      setUsers(data);
-    }
-    setLoading(false);
-  };
 
   if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error">{error}</div>;
