@@ -1,77 +1,93 @@
 import React, { useState } from 'react';
+import './login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
 
- function validateEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  function validateEmail(email) {
+    return email.includes('@') && email.includes('.');
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (!validateEmail(email)) {
-      setError('Please enter a valid email address.');
-      return;
+  function handleSubmit(e) {
+    e.preventDefault();
+    let valid = true;
+
+    if (!validateEmail(email.trim())) {
+      setEmailError('Please enter a valid email address.');
+      valid = false;
+    } else {
+      setEmailError('');
     }
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters long.');
-      return;
+
+    // if (password.length < 6) {
+    //   setPasswordError('Password must be at least 6 characters.');
+    //   valid = false;
+    // } else {
+    //   setPasswordError('');
+    // } depends on your requirements
+
+    if (valid) {
+      alert(`Submitted:\nEmail: ${email}`);
+      // reset form (optional)
+      setEmail('');
+      setPassword('');
     }
-    setError('');
-    setLoading(true);
-    setTimeout(() => {
-      alert(`Email: ${email}\nPassword: ${password}`);
-      setLoading(false);
-    }, 1000);
-  }  
+  }
 
   return (
-    <form onSubmit={handleSubmit} style={{ padding: '20px', fontFamily: 'Arial' }}>
-      <h2>Please log in Good Sir</h2>
-      <label htmlFor="email">Email:</label>
-      <input
-        id="email"
-        type="email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        placeholder="Enter your email"
-        style={{ marginRight: '10px', padding: '5px' }}
-        aria-label="Email"
-        required
-      />
-      <label htmlFor="password">Password:</label>
-      <input
-        id="password"
-        type={showPassword ? "text" : "password"}
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        placeholder="Enter your password"
-        style={{ marginRight: '10px', padding: '5px' }}
-        aria-label="Password"
-        required
-      />
-      <label>
-        <input
-          type="checkbox"
-          checked={showPassword}
-          onChange={() => setShowPassword(!showPassword)}
-          style={{ marginRight: '5px' }}
-        />
+    <main className="login-container">
+      <form onSubmit={handleSubmit} className="login-form">
+        <h2>Please login good sir</h2>
+        <div className="form-group">
+          <label htmlFor="emailInput">Email</label>
+          <input
+            type="email"
+            id="emailInput"
+            className="form-input"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="Enter your email"
+          />
+          {emailError && <p className="error">{emailError}</p>}
+        </div>
 
-      </label>
-      <button
-        type="submit"
-        style={{ padding: '5px 10px' }}
-        disabled={loading || !email || !password}
-      >
-        {loading ? 'Submitting...' : 'Submit'}
-      </button>
-      {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
-    </form>
+       <div className="form-group">
+   <label htmlFor="password">Password:</label>
+  <input
+    type={showPassword ? "text" : "password"}
+    id="password"
+    className="form-input"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    placeholder="Enter your password"
+  />
+</div>
+
+<div className="form-group">
+  <label className="show-password">
+    <input
+      type="checkbox"
+      checked={showPassword}
+      onChange={() => setShowPassword(!showPassword)}
+    />
+    Show Password
+  </label>
+  {passwordError && <p className="error">{passwordError}</p>}
+</div>
+
+        <button
+          type="submit"
+          className="submit-button"
+          disabled={!email || !password}
+        >
+          Login
+        </button>
+      </form>
+    </main>
   );
 }
 
