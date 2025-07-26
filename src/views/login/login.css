@@ -7,7 +7,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: radial-gradient(ellipse at top left, #72572c, #b46924, #b38338);
+  background: radial-gradient(ellipse at top left, #000000, #4e2a00, #000000);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -22,7 +22,7 @@ body {
   padding: 40px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(95, 78, 0, 0.356);
   border: 1px solid rgba(255, 255, 255, 0.1);
   animation: fadeIn 0.8s ease-in-out;
 }
@@ -74,7 +74,7 @@ label {
 }
 
 .form-input::placeholder {
-  color: #363636;
+  color: #707070;
 }
 
 .form-input:focus {
@@ -84,7 +84,7 @@ label {
 
 .submit-button {
   padding: 12px;
-  background: linear-gradient(135deg, #d3b45f, #d49e14);
+  background: linear-gradient(135deg, #d3a15f, #d48714);
   border: none;
   color: #000;
   border-radius: 10px;

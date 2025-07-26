@@ -82,7 +82,7 @@ function Login() {
             className="form-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
+            placeholder="Email"
           />
           {emailError && <p className="error">{emailError}</p>}
         </div>
@@ -95,7 +95,7 @@ function Login() {
             className="form-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
+            placeholder="********"
           />
         </div>
 
