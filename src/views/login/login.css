@@ -7,7 +7,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: radial-gradient(ellipse at top left, #000000, #4e2a00, #000000);
+  background: radial-gradient(ellipse at top left, #000000, #ad6a1c, #000000);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -74,7 +74,7 @@ label {
 }
 
 .form-input::placeholder {
-  color: #707070;
+  color: #000000b6;
 }
 
 .form-input:focus {

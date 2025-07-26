@@ -67,6 +67,7 @@ function Login() {
   }, []);
 
   return (
+    <body>
     <main className="login-container">
       <form onSubmit={handleSubmit} className="login-form">
         <div className="avatar-container">
@@ -131,6 +132,7 @@ function Login() {
         </button>
       </form>
     </main>
+    </body>
   );
 }
 
