@@ -2,11 +2,17 @@ import React, { useState, useRef, useEffect } from 'react';
 import Sidebar from '../../components/sidebar';
 import './dashboard.css';
 
-// --- BEGIN: Analytics, Map, and User Details Section Imports ---
+// Icons
+import { 
+  FiUser, FiMail, FiPhone, FiHome, FiGlobe, FiBriefcase, 
+  FiChevronLeft, FiChevronRight, FiUsers, FiMapPin, FiLayers,
+ FiNavigation, FiMap
+} from 'react-icons/fi';
+
+// Map components
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { FiUser, FiMail, FiPhone, FiHome, FiGlobe, FiBriefcase, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 // Fix Leaflet marker icons
 delete L.Icon.Default.prototype._getIconUrl;
@@ -15,23 +21,19 @@ L.Icon.Default.mergeOptions({
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
-// --- END: Analytics, Map, and User Details Section Imports ---
 
 const Dashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
-
-  // --- BEGIN: Analytics, Map, and User Details Section State ---
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedUser, setSelectedUser] = useState(null);
   const [userIndex, setUserIndex] = useState(0);
   const mapRef = useRef(null);
   const markerRefs = useRef({});
-  // --- END: Analytics, Map, and User Details Section State ---
 
   const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
+    setSidebarOpen((prev) => !prev);
   };
 
   const handleClickOutside = (e) => {
@@ -51,8 +53,6 @@ const Dashboard = () => {
     };
   }, [isSidebarOpen]);
 
-  // --- BEGIN: Analytics, Map, and User Details Section Logic ---
-  // Fetch users
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(res => res.json())
@@ -64,26 +64,22 @@ const Dashboard = () => {
       .catch(() => setLoading(false));
   }, []);
 
-  // Analytics data
   const totalUsers = users.length;
   const totalCompanies = new Set(users.map(u => u.company?.name)).size;
   const totalCities = new Set(users.map(u => u.address?.city)).size;
 
-  // Prepare map pins
   const pins = users.map(u => ({
     ...u,
     lat: parseFloat(u.address?.geo?.lat) || 0,
     lng: parseFloat(u.address?.geo?.lng) || 0,
   }));
 
-  // Handle pin click
   const handlePinClick = (user) => {
     const index = users.findIndex(u => u.id === user.id);
     setUserIndex(index);
     setSelectedUser(user);
   };
 
-  // Center map when user changes
   useEffect(() => {
     if (selectedUser && mapRef.current && markerRefs.current[selectedUser.id]) {
       const { lat, lng } = pins.find(p => p.id === selectedUser.id) || {};
@@ -94,7 +90,6 @@ const Dashboard = () => {
     }
   }, [selectedUser, pins]);
 
-  // Get website favicon
   const getFavicon = (website) => {
     if (!website) return null;
     try {
@@ -105,13 +100,11 @@ const Dashboard = () => {
       return null;
     }
   };
-  // --- END: Analytics, Map, and User Details Section Logic ---
 
-  // Keep your original layout and hamburger/sidebar logic
   return (
     <div className="dashboard-container">
       <Sidebar isOpen={isSidebarOpen} sidebarRef={sidebarRef} />
-      
+
       <div className="hamburger-container">
         <button className="hamburger" onClick={toggleSidebar}>
           <span className="bar"></span>
@@ -121,20 +114,26 @@ const Dashboard = () => {
       </div>
 
       <div className="main">
+        <div className="dashboard-header">
+          <h1> Dashboard</h1>
+          <p className="dashboard-subtitle">User Analytics and Information</p>
+        </div>
+        
         <div className="dashboard-cards-grid">
-          {/* --- Analytics Card Row --- */}
-          <div className="dashboard-card analytics-card-row">
+          {/* Analytics Card Row */}
+          <div>
             <div className="analytics-cards-row">
               <div className="analytics-metric-card">
                 <div className="metric-label-row">
-                  <span className="metric-label">Audience</span>
-                  <span className="metric-badge">New</span>
+                  <FiUsers className="metric-icon" />
+                  <span className="metric-label">Users</span>
                 </div>
                 <div className="metric-value">{totalUsers}</div>
-                <div className="metric-desc">Total Users</div>
+                <div className="metric-desc">Total Number of Users</div>
               </div>
               <div className="analytics-metric-card">
                 <div className="metric-label-row">
+                  <FiBriefcase className="metric-icon" />
                   <span className="metric-label">Companies</span>
                 </div>
                 <div className="metric-value">{totalCompanies}</div>
@@ -142,6 +141,7 @@ const Dashboard = () => {
               </div>
               <div className="analytics-metric-card">
                 <div className="metric-label-row">
+                  <FiMapPin className="metric-icon" />
                   <span className="metric-label">Cities</span>
                 </div>
                 <div className="metric-value">{totalCities}</div>
@@ -150,11 +150,11 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* --- Map & Details Card --- */}
+          {/* Map & Details Card */}
           <div className="dashboard-card map-details-card">
             <section className="map-details-section">
               <div className="dashboard-card-header">
-                <h2>User Map</h2>
+                <h2><FiMap className="section-icon" /> User Locations</h2>
               </div>
               <div className="map-details-grid">
                 <div className="map-container">
@@ -179,9 +179,18 @@ const Dashboard = () => {
                         ref={el => markerRefs.current[user.id] = el}
                       >
                         <Popup>
-                          <strong>{user.name}</strong><br />
-                          {user.address?.city}<br />
-                          {user.company?.name}
+                          <div className="map-popup">
+                            <FiUser className="popup-icon" />
+                            <strong>{user.name}</strong>
+                            <div className="popup-company">
+                              <FiBriefcase className="popup-icon" />
+                              {user.company?.name}
+                            </div>
+                            <div className="popup-location">
+                              <FiMapPin className="popup-icon" />
+                              {user.address?.city}
+                            </div>
+                          </div>
                         </Popup>
                       </Marker>
                     ))}
@@ -199,7 +208,7 @@ const Dashboard = () => {
                     >
                       <FiChevronLeft />
                     </button>
-                    <span>User Details</span>
+                    <span><FiUser className="nav-icon" /> User Details</span>
                     <button 
                       onClick={() => {
                         const newIndex = Math.min(users.length - 1, userIndex + 1);
@@ -214,36 +223,49 @@ const Dashboard = () => {
                   {selectedUser ? (
                     <div className="details-content">
                       <div className="user-header">
-                        <FiUser className="icon" />
-                        <h3>{selectedUser.name}</h3>
+                        <div className="user-avatar">
+                          <FiUser className="avatar-icon" />
+                        </div>
+                        <div className="user-info">
+                          <h3>{selectedUser.name}</h3>
+                          <div className="user-company">
+                            <FiBriefcase className="company-icon" />
+                            {selectedUser.company?.name}
+                            {selectedUser.company?.bs && (
+                              <span className="company-tag">{selectedUser.company.bs}</span>
+                            )}
+                          </div>
+                        </div>
                       </div>
                       <div className="details-grid">
                         <div className="detail-item">
                           <FiUser className="icon" />
                           <span className="label">Username:</span>
-                          <span>{selectedUser.username}</span>
+                          <span className="value">{selectedUser.username}</span>
                         </div>
                         <div className="detail-item">
                           <FiMail className="icon" />
                           <span className="label">Email:</span>
-                          <span>{selectedUser.email}</span>
+                          <a href={`mailto:${selectedUser.email}`} className="value">
+                            {selectedUser.email}
+                          </a>
                         </div>
                         <div className="detail-item">
                           <FiPhone className="icon" />
                           <span className="label">Phone:</span>
-                          <span>{selectedUser.phone}</span>
-                        </div>
-                        <div className="detail-item">
-                          <FiBriefcase className="icon" />
-                          <span className="label">Company:</span>
-                          <span>{selectedUser.company?.name}</span>
+                          <a href={`tel:${selectedUser.phone}`} className="value">
+                            {selectedUser.phone}
+                          </a>
                         </div>
                         <div className="detail-item">
                           <FiHome className="icon" />
                           <span className="label">Address:</span>
-                          <span>
-                            {selectedUser.address?.street}, {selectedUser.address?.city}
-                          </span>
+                          <div className="value address-value">
+                            <div>{selectedUser.address?.street}</div>
+                            <div>
+                              {selectedUser.address?.city}, {selectedUser.address?.zipcode}
+                            </div>
+                          </div>
                         </div>
                         <div className="detail-item">
                           <FiGlobe className="icon" />
@@ -252,22 +274,24 @@ const Dashboard = () => {
                             href={`https://${selectedUser.website}`} 
                             target="_blank" 
                             rel="noopener noreferrer"
+                            className="value website-link"
                           >
                             {selectedUser.website}
+                            {getFavicon(selectedUser.website) && (
+                              <img 
+                                src={getFavicon(selectedUser.website)} 
+                                alt="favicon" 
+                                className="favicon" 
+                              />
+                            )}
                           </a>
-                          {getFavicon(selectedUser.website) && (
-                            <img 
-                              src={getFavicon(selectedUser.website)} 
-                              alt="favicon" 
-                              className="favicon"
-                            />
-                          )}
                         </div>
                       </div>
                     </div>
                   ) : (
                     <div className="no-user-selected">
-                      Click a pin to view user details
+                      <FiNavigation className="no-user-icon" />
+                      <p>Click a pin to view user details</p>
                     </div>
                   )}
                 </div>

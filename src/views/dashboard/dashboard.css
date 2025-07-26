@@ -4,10 +4,9 @@
   transition: all 0.3s ease;
 }
 
-/* Main Content */
 .main {
   flex: 1;
-  padding: 40px;
+  padding: 10px;
   transition: margin-left 0.3s;
 }
 
@@ -20,7 +19,6 @@
   margin-left: 220px;
 }
 
-/* Hamburger Container */
 .hamburger-container {
   width: 30px;
   padding: 20px;
@@ -29,7 +27,6 @@
   background-color: var(--color-bg);
 }
 
-/* Hamburger Menu */
 .hamburger {
   background: none;
   border: none;
@@ -60,15 +57,14 @@
   background-color: var(--btn-hover-bg);
 }
 
-/* --- Analytics Section --- */
 .analytics-section {
-  margin-bottom: 32px;
+  margin-bottom: 0px;
 }
 
 .analytics-section h2 {
   font-size: 1.25rem;
   color: var(--color-accent);
-  margin-bottom: 16px;
+  margin-bottom: 0px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--color-border);
 }
@@ -77,7 +73,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 0px;
 }
 
 .metric-card {
@@ -96,7 +92,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
   color: var(--color-muted);
   font-size: 0.9rem;
 }
@@ -111,31 +107,28 @@
   color: var(--color-heading);
 }
 
-/* --- Map & Details Section --- */
-.map-details-section {
-  margin-bottom: 32px;
-}
 
 .map-details-section h2 {
   font-size: 1.25rem;
   color: var(--color-accent);
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 4px;
+  padding-bottom: 4px;
 }
 
 .map-details-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 24px;
+  width: 100%;
 }
 
 .map-container {
-  height: 400px;
+  height: 450px;
   background: var(--color-card-bg);
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--shadow);
+  margin-top: 0 px;
 }
 
 .map {
@@ -145,11 +138,11 @@
 
 .details-card {
   background: var(--color-card-bg);
-  border-radius: var(--border-radius);
-  padding: 20px;
+  border-radius: 16px;
   box-shadow: var(--shadow);
-  height: 400px;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0;            
 }
 
 .details-nav {
@@ -159,6 +152,10 @@
   margin-bottom: 20px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--color-border);
+}
+
+.details-content {
+  padding: 16px;
 }
 
 .details-nav button {
@@ -190,8 +187,9 @@
 .user-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .user-header h3 {
@@ -201,16 +199,15 @@
 
 .details-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
+  grid-template-columns: 1fr 1fr; 
+  gap: 12px 24px;
+  padding: 16px;
 }
 
 .detail-item {
-  display: grid;
-  grid-template-columns: 24px auto 1fr;
-  gap: 8px;
+  display: flex;
   align-items: center;
-  font-size: 0.9rem;
+  gap: 12px;
 }
 
 .detail-item .icon {
@@ -219,8 +216,9 @@
 }
 
 .detail-item .label {
-  color: var(--color-muted);
+  width: 80px;
   font-weight: 500;
+  color: var(--color-muted);
 }
 
 .detail-item a {
@@ -229,6 +227,12 @@
   transition: text-decoration 0.2s;
 }
 
+.detail-item .value {
+  flex: 1;
+  font-weight: 600;
+  text-align: left;
+  color: var(--color-text);
+}
 .detail-item a:hover {
   text-decoration: underline;
 }
@@ -249,23 +253,23 @@
   font-style: italic;
 }
 
-/* --- Modern Dashboard Card Layout --- */
 .dashboard-cards-grid {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 15px;
+  max-width: none;
+  margin: 0;
+  width: 100%;
 }
 
 .dashboard-card {
   background: rgba(255, 255, 255, 0.04);
-  border-radius: 24px;
+  border-radius: 0px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 32px 32px 24px 32px;
+  padding: 0, 0, 0, 0;
   transition: box-shadow 0.3s, transform 0.3s;
   position: relative;
 }
@@ -276,12 +280,10 @@
 }
 
 .dashboard-card-header {
-  margin-bottom: 24px;
   position: sticky;
   top: 0;
   z-index: 10;
   background: var(--color-card-bg);
-  /* Optional: add a subtle border or shadow for separation */
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04);
 }
 
@@ -293,16 +295,35 @@
   letter-spacing: -1px;
 }
 
+.dashboard-header {
+  margin-bottom: 10px;
+  padding-bottom: px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-header h1 {
+  font-size: 2.4rem;
+  margin: 0;
+  color: var(--color-heading);
+  letter-spacing: -0.5px;
+  font-weight: 700;
+}
+
+.dashboard-subtitle {
+  color: var(--color-muted);
+  margin: 0px;
+  font-size: 1.1rem;
+}
+
 .dashboard-card-subtitle {
   display: block;
   color: var(--color-muted);
   font-size: 1rem;
-  margin-top: 4px;
+  margin-top: 0;
   margin-bottom: 0;
   letter-spacing: 0.1em;
 }
 
-/* --- Modern Analytics Card Row --- */
 .analytics-card-row {
   background: var(--color-card-bg);
   border-radius: 20px;
@@ -314,12 +335,14 @@
 .analytics-cards-row {
   display: flex;
   gap: 24px;
-  justify-content: space-between;
+  justify-content: stretch;
   align-items: stretch;
+  width: 100%;
 }
 
 .analytics-metric-card {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
   background: rgba(0, 0, 0, 0.10);
   border-radius: 16px;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
@@ -329,12 +352,12 @@
   align-items: flex-start;
   transition: box-shadow 0.2s, transform 0.2s;
   border: 1.5px solid var(--color-border);
-  min-width: 0;
   position: relative;
 }
 
 .analytics-metric-card:hover {
   transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 2px 8px 0 var(--color-accent, orange)
 }
 
 .metric-label-row {
@@ -376,7 +399,6 @@
   font-weight: 500;
 }
 
-/* --- Map & Details Card --- */
 .map-details-card {
   background: var(--color-card-bg);
   border-radius: 20px;
@@ -385,7 +407,6 @@
   margin-bottom: 24px;
 }
 
-/* Responsive tweaks for cards */
 @media (max-width: 900px) {
   .dashboard-cards-grid {
     gap: 24px;
@@ -409,7 +430,7 @@
 
 @media (max-width: 600px) {
   .main {
-    padding: 20px;
+    padding: 10px;
   }
   .metrics-grid {
     grid-template-columns: 1fr;
@@ -420,3 +441,153 @@
 }
 
 
+.header-icon {
+  margin-right: 12px;
+  color: var(--color-accent);
+}
+
+.section-icon {
+  margin-right: 10px;
+  color: var(--color-accent);
+}
+
+.map-popup {
+  min-width: 180px;
+}
+
+.map-popup strong {
+  margin-bottom: 4px;
+}
+
+.popup-icon {
+  margin-right: 6px;
+  vertical-align: middle;
+  color: var(--color-accent);
+}
+
+.popup-company, .popup-location {
+  font-size: 0.85rem;
+  margin: 4px 0;
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(var(--color-accent-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+}
+
+.avatar-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-info h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.user-info .company-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-top: 4px;
+}
+
+.user-info .company-tagline {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  margin-left: 24px;
+  font-style: italic;
+}
+
+.user-company {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-top: 4px;
+}
+
+.company-icon {
+  margin-right: 6px;
+}
+
+.company-tag {
+  background: rgba(var(--color-accent-rgb), 0.1);
+  color: var(--color-accent);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.detail-item {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-item .value {
+  text-align: right;
+  color: var(--color-text);
+}
+
+.address-value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.website-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.favicon {
+  margin-left: 6px;
+  width: 16px;
+  height: 16px;
+}
+
+.no-user-selected {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-muted);
+  text-align: center;
+  padding: 20px;
+}
+
+.no-user-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.metric-icon {
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  margin-right: 8px;
+}
+
+.nav-icon {
+  margin-right: 8px;
+  vertical-align: middle;
+}
