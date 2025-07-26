@@ -12,59 +12,57 @@ function Login() {
   const logoUrl = "https://cdn-icons-png.flaticon.com/512/5087/5087579.png"; // change as needed
 
 
-  function validateEmail(email) {
+function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
-  useEffect(() => {
-    if (email && !validateEmail(email)) {
-      setEmailError("Please enter a valid email address.");
-    } else {
-      setEmailError('');
-    }
-  }, [email]);
+function handleSubmit(e) {
+  e.preventDefault();
 
-  useEffect(() => {
-    if (password && password.length < 6) {
-      setPasswordError("Password must be at least 6 characters.");
-    } else {
-      setPasswordError('');
-    }
-  }, [password]);
+  let hasError = false;
 
-
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    if (emailError || passwordError || !email || !password) return;
-
-    setIsSubmitting(true);
-
-    //Need to import toast from 'react-hot-toast' or similar for notifications
-    // toast.loading('Logging in...'); need to para gumana to 
-
-    // setTimeout(() => {
-    //   setIsSubmitting(false);
-    //   toast.success('Login successful!');
-
-    //   // // Store email if Remember Me is checked
-    //   // if (rememberMe) {
-    //   //   localStorage.setItem('rememberedEmail', email);
-    //   // } else {
-    //   //   localStorage.removeItem('rememberedEmail');
-    //   // }
-
-    //   setEmail('');
-    //   setPassword('');
-    //   setRememberMe(false);
-
-    //   // Optional navigation
-    //   navigate('/dashboard'); // change this route to your actual dashboard path
-    // }, 1000);
+  if (!email || !validateEmail(email)) {
+    setEmailError("Please enter a valid email address.");
+    hasError = true;
+  } else {
+    setEmailError('');
   }
 
-  useEffect(() => {
+  if (!password || password.length < 6) {
+    setPasswordError("Password must be at least 6 characters.");
+    hasError = true;
+  } else {
+    setPasswordError('');
+  }
+
+  if (hasError) return;
+
+  setIsSubmitting(true);
+
+  //Need to import toast from 'react-hot-toast' or similar for notifications
+  // toast.loading('Logging in...'); need to para gumana to 
+
+  // setTimeout(() => {
+  //   setIsSubmitting(false);
+  //   toast.success('Login successful!');
+
+  //   // // Store email if Remember Me is checked
+  //   // if (rememberMe) {
+  //   //   localStorage.setItem('rememberedEmail', email);
+  //   // } else {
+  //   //   localStorage.removeItem('rememberedEmail');
+  //   // }
+
+  //   setEmail('');
+  //   setPassword('');
+  //   setRememberMe(false);
+
+  //   // Optional navigation
+  //   navigate('/dashboard'); // change this route to your actual dashboard path
+  // }, 1000);
+}
+
+useEffect(() => {
     const remembered = localStorage.getItem('rememberedEmail');
     if (remembered) {
       setEmail(remembered);
