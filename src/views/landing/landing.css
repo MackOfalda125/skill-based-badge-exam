@@ -106,3 +106,20 @@ body {
 .login-btn:hover {
   background: #f6b27a;
 }
+
+.github-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #2c2c2e;
+  background-color: #f4a261;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.github-btn:hover {
+  background-color: #f6b27a;
+}
+
