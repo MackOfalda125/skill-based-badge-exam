@@ -105,7 +105,7 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <Sidebar isOpen={isSidebarOpen} sidebarRef={sidebarRef} />
 
-      <div className="hamburger-container">
+      <div className={`hamburger-container ${!isSidebarOpen ? 'shifted' : ''}`}>
         <button className="hamburger" onClick={toggleSidebar}>
           <span className="bar"></span>
           <span className="bar"></span>
@@ -113,7 +113,7 @@ const Dashboard = () => {
         </button>
       </div>
 
-      <div className="main">
+      <div className={`main ${!isSidebarOpen ? 'main-shifted' : ''}`}>
         <div className="dashboard-header">
           <h1> Dashboard</h1>
           <p className="dashboard-subtitle">User Analytics and Information</p>
@@ -169,6 +169,7 @@ const Dashboard = () => {
                       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                     />
+                    
                     {pins.map(user => (
                       <Marker
                         key={user.id}
