@@ -1,3 +1,84 @@
+/* Dashboard Container */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  transition: all 0.3s ease;
+  position: relative;
+  min-width: 870px;
+}
+
+/* Main Content */
+.main {
+  position: absolute;
+  left: 270px;
+  top: 0;
+  right: 0;
+  padding: 40px;
+  transition: left 0.3s;
+  min-height: 100vh;
+  min-width: 600px;
+}
+
+.main h1 {
+  font-size: var(--font-size-heading);
+  color: var(--color-heading);
+}
+
+.main-shifted {
+  left: 50px;
+  min-width: 600px;
+}
+
+/* Hamburger Container */
+.hamburger-container {
+  position: fixed;
+  top: 0;
+  left: 220px;
+  width: 50px;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-bg);
+  z-index: 1001;
+  height: 100vh;
+  transition: transform 0.3s ease;
+}
+
+.hamburger-container.shifted {
+  transform: translateX(-220px);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  outline: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.hamburger:hover {
+  background-color: transparent;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-accent);
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.hamburger:hover .bar {
+  background-color: var(--btn-hover-bg);
+}
+
 .manage-container {
   padding: 20px;
   max-width: var(--container-max-width);
@@ -113,7 +194,33 @@
   line-height: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 870px) {
+  .dashboard-container {
+    min-width: 870px;
+    overflow-x: auto;
+  }
+  .main {
+    min-width: 600px;
+  }
+  .main-shifted {
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-container {
+    min-width: 870px;
+    overflow-x: auto;
+  }
+  .main {
+    padding: 20px;
+    left: 70px;
+    min-width: 600px;
+  }
+  .main-shifted {
+    left: 70px;
+    min-width: 600px;
+  }
   .table-header,
   .table-row {
     grid-template-columns: 1fr;

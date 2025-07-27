@@ -117,7 +117,7 @@ const Manage = () => {
     <div className="dashboard-container">
       <Sidebar isOpen={isSidebarOpen} sidebarRef={sidebarRef} />
       
-      <div className="hamburger-container">
+      <div className={`hamburger-container ${!isSidebarOpen ? 'shifted' : ''}`}>
         <button className="hamburger" onClick={toggleSidebar}>
           <span className="bar"></span>
           <span className="bar"></span>
@@ -125,7 +125,7 @@ const Manage = () => {
         </button>
       </div>
 
-      <div className="main">
+      <div className={`main ${!isSidebarOpen ? 'main-shifted' : ''}`}>
         <div className="manage-container">
           <div className="manage-header">
             <h1>Manage Users</h1>
