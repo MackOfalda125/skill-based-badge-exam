@@ -1,16 +1,18 @@
-import './App.css';
-import Login from './views/login/login';
-import LandingPage from './views/landing/landing';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Dashboard from './views/dashboard/dashboard';
+import Manage from './views/manage/manage';
+
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/landing" element={<LandingPage />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/manage" element={<Manage />} />
+      
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
