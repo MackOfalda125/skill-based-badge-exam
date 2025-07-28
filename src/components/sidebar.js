@@ -16,7 +16,7 @@ const Sidebar = ({ isOpen, sidebarRef }) => {
     >
       <h2 
         className="sidebar-title"
-        onClick={() => handleNavigation('/')}
+        onClick={() => handleNavigation('/dashboard')}
       >
         Dashboard
       </h2>
@@ -28,9 +28,15 @@ const Sidebar = ({ isOpen, sidebarRef }) => {
       </button>
       <button 
         className="sidebar-btn" 
-        onClick={() => handleNavigation('/display')}
+        onClick={() => handleNavigation('/report')}
       >
         Display All Users
+      </button>
+      <button 
+        className="sidebar-btn logout-btn" 
+        onClick={() => handleNavigation('/')}
+      >
+        Logout
       </button>
     </div>
   );

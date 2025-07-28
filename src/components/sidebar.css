@@ -66,7 +66,7 @@
   font-weight: var(--font-weight-bold);
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: calc(100% - 40px);
+  width: 100%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -78,4 +78,15 @@
 
 .sidebar-btn:hover {
   background-color: var(--btn-hover-bg);
+}
+
+.logout-btn {
+  margin-top: auto;
+  background-color: #dc3545;
+  color: white;
+  font-weight: var(--font-weight-bold);
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
 }
