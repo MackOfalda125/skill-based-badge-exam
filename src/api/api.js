@@ -27,7 +27,8 @@ const api = {
     }
   },
 
-updateUser: async (id, user) => {
+  // ---------- PUT: Update user ----------
+  updateUser: async (id, user) => {
     try {
       // Ensure the user object is sent as JSON
       const res = await axios.put(`${API_URL}/${id}`, {
@@ -41,7 +42,7 @@ updateUser: async (id, user) => {
     }
   },
 
- // ---------- DELETE: Delete user ----------
+  // ---------- DELETE: Delete user ----------
   deleteUser: async (id) => {
     try {
       await axios.delete(`${API_URL}/${id}`);
@@ -49,8 +50,7 @@ updateUser: async (id, user) => {
     } catch (err) {
       return { data: null, error: err.message || 'Failed to delete user' };
     }
-  }
-
+  },
 };
 
 export default api;

@@ -1,10 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-import Reports from './views/report/report';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Dashboard from './views/dashboard/dashboard';
+import Manage from './views/manage/manage';
+
 
 function App() {
   return (
-    <Reports/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/manage" element={<Manage />} />
+      
+      </Routes>
+    </BrowserRouter>
   );
 }
 

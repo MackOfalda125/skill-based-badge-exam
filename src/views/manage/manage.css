@@ -1,0 +1,244 @@
+/* Dashboard Container */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  transition: all 0.3s ease;
+  position: relative;
+  min-width: 870px;
+}
+
+/* Main Content */
+.main {
+  position: absolute;
+  left: 270px;
+  top: 0;
+  right: 0;
+  padding: 40px;
+  transition: left 0.3s;
+  min-height: 100vh;
+  min-width: 600px;
+}
+
+.main h1 {
+  font-size: var(--font-size-heading);
+  color: var(--color-heading);
+}
+
+.main-shifted {
+  left: 50px;
+  min-width: 600px;
+}
+
+/* Hamburger Container */
+.hamburger-container {
+  position: fixed;
+  top: 0;
+  left: 220px;
+  width: 50px;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-bg);
+  z-index: 1001;
+  height: 100vh;
+  transition: transform 0.3s ease;
+}
+
+.hamburger-container.shifted {
+  transform: translateX(-220px);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  outline: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.hamburger:hover {
+  background-color: transparent;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-accent);
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.hamburger:hover .bar {
+  background-color: var(--btn-hover-bg);
+}
+
+.manage-container {
+  padding: 20px;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.users-table {
+  width: 100%;
+  background-color: var(--color-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 2fr 1fr;
+  background-color: var(--color-accent);
+  padding: 15px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+}
+
+.table-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 2fr 1fr;
+  padding: 15px;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+}
+
+.table-row:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.column {
+  padding: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+/* Custom styles for specific buttons that differ from default */
+.edit-btn {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+}
+
+.delete-btn {
+  background-color: #f44336; 
+  color: white;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-size: var(--font-size-base);
+  color: var(--color-muted);
+}
+
+.error {
+  color: #f44336; 
+  text-align: center;
+  padding: 20px;
+}
+
+.manage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-user-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--color-accent);
+  color: var(--color-heading);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: var(--font-weight-bold);
+  transition: background-color 0.3s ease;
+  line-height: 1;
+}
+
+.add-user-btn:hover {
+  background-color: var(--btn-hover-bg);
+}
+
+.plus-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 3px; 
+  height: 100%;
+  line-height: 1;
+}
+
+@media (max-width: 870px) {
+  .dashboard-container {
+    min-width: 870px;
+    overflow-x: auto;
+  }
+  .main {
+    min-width: 600px;
+  }
+  .main-shifted {
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-container {
+    min-width: 870px;
+    overflow-x: auto;
+  }
+  .main {
+    padding: 20px;
+    left: 70px;
+    min-width: 600px;
+  }
+  .main-shifted {
+    left: 70px;
+    min-width: 600px;
+  }
+  .table-header,
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .column {
+    padding: 5px 0;
+  }
+
+  .table-header {
+    display: none;
+  }
+
+  .column:before {
+    content: attr(data-label);
+    font-weight: var(--font-weight-bold);
+    display: inline-block;
+    width: 100px;
+  }
+}

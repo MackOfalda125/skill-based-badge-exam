@@ -1,0 +1,72 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--color-bg);
+  padding: 24px;
+  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 500px;
+  box-shadow: var(--box-shadow);
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: var(--color-heading);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-heading);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px 12px; /* 8px top/bottom, 12px left/right */
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg);
+  color: var(--color-heading);
+  box-sizing: border-box; /* Ensures padding/border are inside width */
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.cancel-btn, .save-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: var(--font-weight-bold);
+}
+
+.cancel-btn {
+  background-color: var(--color-bg);
+  color: var(--color-heading);
+  border: 1px solid var(--color-border);
+}
+
+.save-btn {
+  background-color: var(--color-accent);
+  color: var(--color-heading);
+}
